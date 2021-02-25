@@ -30,15 +30,10 @@ const processContentType = (path) => {
 }
 
 const sendFile = (path, res) => {
-    console.log('Sending ' + path);
-
     fs.readFile(path, (error, buffer) => {
         if (error) {
-            console.log(path + ' not found.');
             handleNotFound(res);
         } else {
-            console.log('Content-type', processContentType(path));
-
             res.writeHead(200, {'Content-Type': processContentType(path)});
             res.write(buffer);
         }
@@ -48,12 +43,31 @@ const sendFile = (path, res) => {
 }
 
 const requestListener = (req, res) => {
-    if (req.url === '/') {
-        sendFile('index.html', res);
-    } else if (['css', 'js'].includes(req.url.split('.')[1])) {
-        sendFile('.' + req.url, res);
-    } else {
-        handleNotFound(res, () => { res.end(); });
+    if (req.method === 'GET') {
+        if (req.url === '/') {
+            sendFile('index.html', res);
+        } else if (['css', 'js'].includes(req.url.split('.')[1])) {
+            sendFile('.' + req.url, res);
+        } else {
+            handleNotFound(res, () => { res.end(); });
+        }
+    } else if (req.method === 'POST') {
+        if (req.url === '/message') {
+            let data = '';
+
+            req.on('data', chunk => {
+                data = data + chunk;
+            });
+
+            req.on('end', () => {
+                const message = JSON.parse(data);
+
+                res.writeHead(200, {'Content-Type': 'application/json'});
+                res.write(JSON.stringify(message));
+
+                res.end();
+            });
+        }
     }
 }
 
