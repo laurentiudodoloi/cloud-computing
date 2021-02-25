@@ -14,7 +14,10 @@ sendBtn.addEventListener('click', async function (evt) {
         })
         .then(r => {
             console.log(r.data);
-        });
+        })
+        .catch(e => {
+            alert('Error occured.');
+        })
 
     msgInput.value = '';
 });
