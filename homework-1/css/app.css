@@ -34,6 +34,7 @@ p {
 
 .chat-box .chat-body {
     height: 500px;
+    overflow-y: auto;
     background: #fff;
     padding: 12px 16px;
 }
