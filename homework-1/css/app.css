@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #e3e3e3;
+    font-family: sans-serif;
+}
+
+p {
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-box {
+    width: 70%;
+    box-shadow: 0 0 4px #b8b8b8;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box .chat-header {
+    background: #ff6a00;
+    padding: 8px 16px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    color: white;
+}
+
+.chat-box .chat-body {
+    height: 500px;
+    background: #fff;
+    padding: 12px 16px;
+}
+
+.chat-box .msg-text {
+    padding: 4px 12px;
+    border-radius: 24px;
+    font-size: 14px;
+}
+
+.chat-box .msg-pdf {
+    padding: 8px 6px;
+    border-radius: 0;
+    color: #868686;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    flex-direction: column;
+    background: #fff;
+}
+
+.chat-box .msg-pdf:hover {
+    background: #eeeeee;
+}
+
+.chat-box .msg-info {
+    color: #004eff;
+    font-size: 12px;
+}
+
+.chat-box .msg {
+    display: flex;
+    margin-bottom: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.chat-box .msg-left {
+    justify-content: flex-start;
+}
+
+.chat-box .msg-right {
+    align-items: flex-end;
+}
+
+.chat-box .msg .msg-user {
+    color: #bababa;
+    font-weight: 900;
+    padding: 2px 4px;
+    font-size: 12px;
+}
+
+.chat-box .msg-left .msg-text {
+    background: #ffdec6;
+    color: #606060;
+}
+
+.chat-box .msg-right .msg-text {
+    background: #ff6b00;
+    color: #fff;
+}
+
+.chat-box .chat-footer {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    background: #e6e5e5;
+    padding: 12px 16px;
+}
+
+.chat-box .chat-footer .chat-form .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.chat-box .chat-footer .chat-form .btn-submit {
+    background: #ff6a00;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: none;
+    color: #ffffff;
+    width: 100px;
+}
+
+.chat-box .chat-footer .chat-form .btn-submit:hover {
+    cursor: pointer;
+    background: #fff;
+    color: #ff6a00;
+    border: 1px solid #ff6a00;
+}
+
+.chat-box .chat-footer .chat-form .btn-submit:focus, .chat-box .chat-footer .chat-form .btn-submit:active {
+    outline: none;
+}
+
+.chat-box .chat-footer .form-input {
+    width: 60%;
+    border: 1px solid #cdcdcd;
+    border-radius: 12px;
+    padding: 6px 14px;
+    color: #747474;
+}
+
+.chat-box .chat-footer .form-input:focus {
+    outline: none;
+}
