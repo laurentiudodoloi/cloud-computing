@@ -1,58 +1,26 @@
+require('dotenv').config()
+
 const http = require('http');
-const fs = require('fs');
 
-const handleNotFound = (res, callback = null) => {
-    fs.readFile('./404.html', (error, buffer) => {
-        if (error) {
-            res.writeHead(404);
-            res.write('Page not found.');
-        } else {
-            res.writeHead(404, {
-                'Content-Type': 'text/html'
-            });
-            res.write(buffer);
-        }
+const functions = require('./functions');
 
-        if (callback) {
-            callback();
-        }
-    });
-}
-
-const processContentType = (path) => {
-    if (path.includes('.html')) {
-        return 'text/html';
-    } else if (path.includes('.css')) {
-        return 'text/css';
-    } else if (path.includes('.js')) {
-        return 'text/javascript';
-    }
-}
-
-const sendFile = (path, res) => {
-    fs.readFile(path, (error, buffer) => {
-        if (error) {
-            handleNotFound(res);
-        } else {
-            res.writeHead(200, {'Content-Type': processContentType(path)});
-            res.write(buffer);
-        }
-
-        res.end();
-    });
-}
+const wordsService = require('./services/wordsService');
+const pexelsService = require('./services/pexelsService');
+const mediaService = require('./services/mediaService');
 
 const requestListener = (req, res) => {
     if (req.method === 'GET') {
         if (req.url === '/') {
-            sendFile('index.html', res);
-        } else if (['css', 'js'].includes(req.url.split('.')[1])) {
-            sendFile('.' + req.url, res);
+            functions.sendFile('./public/index.html', res);
+        } else if (['css', 'js', 'gif'].includes(req.url.split('.')[1])) {
+            functions.sendFile('./public' + req.url, res);
         } else {
-            handleNotFound(res, () => { res.end(); });
+            functions.handleNotFound(res, () => {
+                res.end();
+            });
         }
     } else if (req.method === 'POST') {
-        if (req.url === '/message') {
+        if (req.url === '/') {
             let data = '';
 
             req.on('data', chunk => {
@@ -60,12 +28,31 @@ const requestListener = (req, res) => {
             });
 
             req.on('end', () => {
-                const message = JSON.parse(data);
+                data = JSON.parse(data);
+                const keyword = data.content;
 
-                res.writeHead(200, {'Content-Type': 'application/json'});
-                res.write(JSON.stringify(message));
+                let responseData = {
+                    url: false
+                }
 
-                res.end();
+                wordsService.search(keyword, (wordInfo) => {
+                    let text = wordInfo.results && wordInfo.results.length
+                        ? wordInfo.results[0].definition
+                        : 'Word definition not found.';
+
+                    pexelsService.search(keyword, (imageInfo) => {
+                        const imageUrl = imageInfo && imageInfo.photos.length
+                            ? imageInfo.photos[0].src.original
+                            : process.env.TEXTOVERIMAGE_FALLBACK_IMAGE;
+
+                        responseData.url = mediaService.getUrl(imageUrl, text);
+
+                        res.writeHead(200, {'Content-Type': 'application/json'});
+                        res.write(JSON.stringify(responseData));
+
+                        res.end();
+                    });
+                });
             });
         }
     }
