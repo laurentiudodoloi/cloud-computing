@@ -9,51 +9,27 @@
 
 <body>
     <div class="container">
-        <div class="chat-box">
-            <header class="chat-header">
-                Chat with the Food Assistant
-            </header>
+        <div class="result">
+            <p id="result-text">Image not found!</p>
 
-            <div id="chat" class="chat-body">
-                <p class="msg msg-left">
-                    <span class="msg-user">Assistant</span>
-                    <span class="msg-text">Hello! I am your assistant and I'm here to help you</span>
-                </p>
-
-                <p class="msg msg-left">
-                    <span class="msg-user">Assistant</span>
-                    <span class="msg-text">Please type keywords for your recipe.</span>
-                </p>
-
-                <p class="msg msg-right">
-                    <span class="msg-user">You</span>
-                    <span class="msg-text">Pizza</span>
-                </p>
-
-                <p class="msg msg-left">
-                    <span class="msg-user">Assistant</span>
-                    <span class="msg-text">Here is your Pizza.</span>
-                </p>
-
-                <p class="msg msg-left">
-                    <span class="msg-user">Assistant</span>
-                    <a href="#" class="msg-pdf">
-                        Pizza.pdf
-                        <span class="msg-info">Click for download</span>
-                    </a>
-                </p>
-            </div>
-
-            <div class="chat-footer">
-                <form class="chat-form">
-                    <div class="form-row">
-                        <input id="msg-input" class="form-input" type="text" placeholder="Your message here" />
-
-                        <button id="btn-send" type="submit" class="btn-submit">Send</button>
-                    </div>
-                </form>
-            </div>
+            <img
+                    id="result-img"
+                    src="https://images.pexels.com/photos/4348798/pexels-photo-4348798.jpeg"
+                    alt="Result image"
+            />
         </div>
+
+        <img id="loading" src="./pictures/loading.gif" alt="Loading" />
+
+        <p class="title">Type your name</p>
+
+        <form class="form">
+            <div class="form-group">
+                <input id="input-name" class="form-input" type="text" placeholder="Your name" />
+
+                <button id="btn-submit" class="btn-submit" type="submit">Send</button>
+            </div>
+        </form>
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

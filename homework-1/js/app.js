@@ -1,38 +1,45 @@
-var msgInput = document.getElementById('msg-input');
-var sendBtn = document.getElementById('btn-send');
-var chatEl = document.getElementById('chat');
+var input = document.getElementById('input-name');
+var loading = document.getElementById('loading');
+var btnSubmit = document.getElementById('btn-submit');
+var resultImg = document.getElementById('result-img');
+var resultText = document.getElementById('result-text');
 
-sendBtn.addEventListener('click', async function (evt) {
+btnSubmit.addEventListener('click', async function (evt) {
+    loading.style.display = 'block';
+    input.classList.remove('input-required');
+
     evt.preventDefault();
 
-    if (!msgInput.value) {
+    resultImg.style.display = 'none';
+    resultText.style.display = 'none';
+
+    if (!input.value) {
+        input.classList.add('input-required');
+        loading.style.display = 'none';
+
         return false;
     }
 
+    const content = input.value;
+
+    input.value = '';
+
     await axios
-        .post('/message', {
-            content: msgInput.value
+        .post('/', {
+            name: content
         })
         .then(r => {
-            console.log(r.data);
+            if (r.data.url) {
+                resultImg.src = r.data.url;
 
-            message(msgInput.value);
+                resultImg.style.display = 'block';
+            } else {
+                resultText.style.display = 'block';
+            }
         })
         .catch(e => {
-            alert('Error occured.');
+            resultText.style.display = 'block';
         })
 
-    msgInput.value = '';
+    loading.style.display = 'none';
 });
-
-function message(content, side = 'right') {
-    var msg = document.createElement('p');
-    msg.classList = 'msg msg-' + side;
-
-    var msgText = document.createElement('span');
-    msgText.classList = 'msg-text';
-    msgText.textContent = content;
-
-    msg.appendChild(msgText);
-    chatEl.appendChild(msg);
-}
