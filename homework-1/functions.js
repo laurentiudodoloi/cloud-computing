@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const handleNotFound = (res, callback = null) => {
-    fs.readFile('./404.html', (error, buffer) => {
+    fs.readFile('./views/404.html', (error, buffer) => {
         if (error) {
             res.writeHead(404);
             res.write('Page not found.');

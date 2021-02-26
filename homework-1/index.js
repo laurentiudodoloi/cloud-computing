@@ -7,13 +7,18 @@ const functions = require('./functions');
 const wordsService = require('./services/wordsService');
 const pexelsService = require('./services/pexelsService');
 const mediaService = require('./services/mediaService');
+const logService = require('./services/logService');
 
 const requestListener = (req, res) => {
+    const startTime = Date.now();
+
     if (req.method === 'GET') {
         if (req.url === '/') {
             functions.sendFile('./public/index.html', res);
         } else if (['css', 'js', 'gif'].includes(req.url.split('.')[1])) {
             functions.sendFile('./public' + req.url, res);
+        } else if (req.url === '/metrics') {
+            functions.sendFile('./views/metrics.html', res);
         } else {
             functions.handleNotFound(res, () => {
                 res.end();
@@ -56,6 +61,20 @@ const requestListener = (req, res) => {
             });
         }
     }
+
+    res.on('finish', () => {
+        logService.log({
+            address: req.connection.remoteAddress,
+            url: req.url,
+            method: req.method,
+            user_agent: req.headers['user-agent'],
+            timestamp: Date.now(),
+            duration: Date.now() - startTime,
+            response: {
+                status_code: res.statusCode
+            }
+        });
+    });
 }
 
 const server = http.createServer(requestListener);
