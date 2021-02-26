@@ -2,7 +2,7 @@ require('dotenv').config()
 
 const https = require('https');
 
-module.exports.search = (keyword) => {
+module.exports.search = (keyword, callback) => {
     const options = {
         host: process.env.WORDS_API_HOST,
         path: '/words/' + keyword.toLowerCase().trim(),
@@ -22,9 +22,7 @@ module.exports.search = (keyword) => {
             });
 
             res.on('end', function () {
-                console.log('DATA', JSON.parse(data));
-
-                // callback(JSON.parse(data));
+                callback(JSON.parse(data));
             });
         })
         .end();
