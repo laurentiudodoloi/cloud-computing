@@ -1,4 +1,4 @@
-var input = document.getElementById('input-name');
+var input = document.getElementById('input-word');
 var loading = document.getElementById('loading');
 var btnSubmit = document.getElementById('btn-submit');
 var resultImg = document.getElementById('result-img');
@@ -26,7 +26,7 @@ btnSubmit.addEventListener('click', async function (evt) {
 
     await axios
         .post('/', {
-            name: content
+            content
         })
         .then(r => {
             if (r.data.url) {
