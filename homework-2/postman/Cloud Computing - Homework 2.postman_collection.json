@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "1aa2bab1-6b6f-424d-a091-e126a43c1638",
+		"name": "Cloud Computing - Homework 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users.All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/api/users",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users.Find",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/api/users/2e31b6c3-ac9e-44c3-ac48-ca5e34ed714c",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"2e31b6c3-ac9e-44c3-ac48-ca5e34ed714c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users.Create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"TestA\",\r\n    \"last_name\": \"TestA\",\r\n    \"email\": \"testA@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/api/users",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users.Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Tests\",\r\n    \"last_name\": \"Testsss\",\r\n    \"email1\": \"test22@test.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8080/api/users/2e31b6c3-ac9e-44c3-ac48-ca5e34ed714c",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"2e31b6c3-ac9e-44c3-ac48-ca5e34ed714c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users.Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8080/api/users/f32869c5-ee7d-4899-a67a-c894327963b8",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"f32869c5-ee7d-4899-a67a-c894327963b8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
