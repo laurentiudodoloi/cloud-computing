@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Google Services - Sample</title>
+
+        <link rel="stylesheet" href="css/app.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <a class="back" href="/">
+                <i class="fa fa-angle-left"></i> Try again?
+            </a>
+            <p class="title">Make your best trip!</p>
+        </nav>
+
+        <div class="container">
+            <div class="cards-list">
+                <div class="card flex-60">
+                    <p class="title">Your result</p>
+    
+                    <div class="content"><%= place.name %> is the best place where you want to spend your time and money.</div>
+                </div>
+
+                <div class="card flex-30">
+                    <p class="title">Place rating</p>
+    
+                    <div class="content">
+                        <p class="time"><%= place.name %> - <%= place.rating %></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cards-list">
+                <div class="card flex-60">
+                    <p class="title">Place address</p>
+
+                    <div class="content">
+                        <p><%= place.formatted_address %></p>
+                    </div>
+                </div>
+
+                <div class="card flex-30 actions-block">
+                    <p class="title">What's next?</p>
+    
+                    <div class="content">
+                        <a class="btn-action btn-calendar" href="#">
+                            <i class="fa fa-calendar"></i>
+                            Set to Calendar
+                        </a>
+
+                        <a class="btn-action btn-email" href="#">
+                            <i class="fa fa-envelope"></i>
+                            Send Email
+                        </a>
+
+                        <a class="btn-action btn-share" href="#">
+                            <i class="fa fa-share"></i>
+                            Share with People
+                        </a>
+                    </div>
+                </div>  
+            </div>
+            <div class="cards-list">
+                <div class="card flex-60">
+                    <p class="title"><%= place.name %>'s Latitude</p>
+    
+                    <div class="content" id="placeLatitude"><%= place.geometry.location.lat %></div>
+                </div>
+
+                <div class="card flex-30">
+                    <p class="title"><%= place.name %>'s longitude</p>
+                    <div class="content">
+                        <p class="time" id="placeLongitude"> <%= place.geometry.location.lng %> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-list">
+                <div class="card flex-60">
+                    <p class="title">Server time</p>
+    
+                    <div class="content">  <p class="time"  id="serverTimeZone">  </p></div>
+                </div>
+
+                <div class="card flex-30">
+                    <p class="title">Place timezone</p>
+                    <div class="content">
+                        <p class="time" id="placeTimezone">  </p>
+                    </div>
+                </div>
+            </div>
+            <div class="cards-list">
+                <div class="card flex-60">
+                    <p class="title">Elevation</p>
+            
+                    <div class="content" id = "placeElevation"></div>
+                </div>
+            <div class="card flex-30">
+                <p class="title">Distance to our university</p>
+                <div class="content">
+                    <p class="content" id="placeDistance"><div>
+                </div>
+            </div>
+            </div>
+            
+           
+        </div>
+        <div class="cards-list">
+            <div class="card flex-100">
+                <p class="title"><%= place.name %> on the map</p>
+
+                <div class="content">  <p></p><div  id="map"></div></div>
+            </div>
+
+            
+        </div>
+        <script>
+            var parsedLatitude = <%= place.geometry.location.lat %>;
+            var parsedLongitude = <%= place.geometry.location.lng %>;
+
+            console.log('latitude ='+parsedLatitude);
+        </script>
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJnzDmfp27eI8CE2Ucu_AR8IyNaxGF4cw&callback=initMap&libraries=&v=weekly"
+        async
+      ></script>
+        <script type="text/javascript" src="js/search.js"></script>
+    </body>
+</html>

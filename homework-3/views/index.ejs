@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Search</title>
+
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <p class="title">Trip simulator</p>
+        </nav>
+
+        <div class="container">
+            <form action="/search" method="POST" class="search" >
+                <div class="group">
+                  <input name="search" type="text" placeholder="Search for a place.." required>
+
+                  <span class="highlight"></span>
+                  <span class="bar"></span>
+                </div>
+
+                  <button class="group" id="submitButton" type="submit"><i>Search</i></button>
+              </form>
+        </div>
+        
+    </body>
+</html>
