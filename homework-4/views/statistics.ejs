@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Services - Sample</title>
+
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"/>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a class="back" href="/">
+            <i class="fa fa-angle-left"></i> Want more? Try again
+        </a>
+
+        <p class="title">Hey! Thank you for using our random services!</p>
+    </nav>
+
+    <div class="container">
+        <div class="cards-list">
+            <div class="card flex-60">
+                <p class="title">Your result</p>
+
+                <div class="content">Place is the best place where you want to spend your time and money.</div>
+            </div>
+
+            <div class="card flex-30">
+                <p class="title">Time</p>
+
+                <div class="content">
+                    <p class="time" id="tme"></p>
+                </div>
+            </div>
+            <div class="card flex-60">
+                <p class="title">Latitude</p>
+
+                <div class="content" id="latpid"  ></div>
+            </div>
+
+            <div class="card flex-30">
+                <p class="title">longitude</p>
+
+                <div class="content">
+                    <p class="time" id="longpid" ></p>
+                <div class="content">
+                    <%= data %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+         var place =document.getElementById('tme');
+         var longp =document.getElementById('longpid');
+         var latp =document.getElementById('latpid');
+
+    
+        var lo =      localStorage.getItem("longitude");
+       var  la = localStorage.getItem("latitude");
+       longp.innerText = lo;
+       latp.innerText = la;
+       var r;
+     let request = new XMLHttpRequest();
+     request.open("GET","https://custom-functions4hwcc.azurewebsites.net/api/TellTheTime?code=MAtDtPaTnTJ64gncCNxRzjJGEcvgjdfob9ri3ahTReIG5MF7RGMQTw==");
+     request.send();
+     request.onload = ()=>{
+        if (request.status===200)
+        {
+            console.log(request.response);
+          place.value = request.response;
+           place.innerText = request.response;
+        }
+        else {
+            console.log(`error ${request.status} with ${request.statusText}`);
+            alert(`error ${request.status} with ${request.statusText}`);
+        }
+     }
+   
+              
+   
+
+
+    </script>
+</body>
+</html>

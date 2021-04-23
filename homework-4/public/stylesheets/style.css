@@ -1,0 +1,321 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: #f7f7f7;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.navbar {
+  background: #f6d90c;
+  padding: 10px 10%;
+  box-shadow: 0 0 5px #88877f;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .back {
+  margin-right: 20px;;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #2900ff;
+}
+
+.navbar .back i {
+  margin-right: 6px;
+}
+
+.navbar .back:hover {
+  color: #000000;
+}
+
+.navbar .title {
+  color: #000;
+  font-size: 24px;
+}
+
+.container {
+  height: 100vh;
+  margin: 0 10%;
+  padding-top: 6%;
+}
+
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+
+.cards-list .card {
+  margin-right: 24px;
+  background: #f1f1f1;
+  min-height: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 4px #d2d2d2;
+}
+
+.card .title {
+  font-size: 14px;
+  padding: 6px 10px;
+  background: #f6d90c;
+  color: #fff;
+  font-weight: 600;
+}
+
+.card .content {
+  padding: 6px 10px;
+}
+
+.flex-20 {
+  flex: 20%;
+  max-width: 20%;
+}
+
+.flex-30 {
+  flex: 30%;
+  max-width: 30%;
+}
+
+.flex-40 {
+  flex: 40%;
+  max-width: 40%;
+}
+
+.flex-60 {
+  flex: 60%;
+  max-width: 60%;
+}
+
+.flex-80 {
+  flex: 80%;
+  max-width: 80%;
+}
+
+.flex-100 {
+  flex: 100%;
+  max-width: 100%;
+  max-height: 70%;
+}
+
+.content .time {
+  font-weight: 600;
+}
+
+.content .text {
+  padding: 8px 0;
+  color: #555555;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-action {
+  display: block;
+  border: 1px solid #ccc;
+  padding: 2px 14px;
+  font-size: 14px;
+  background: #fff;
+  color: #f6d90c;
+  font-weight: 600;
+}
+
+.btn-action i {
+  margin-right: 6px;
+}
+
+.btn-action:hover {
+  background: #f6d90c;
+  color: #fff;
+}
+
+.btn-calendar, .btn-email {
+  margin-bottom: 6px;
+}
+
+.actions-block {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.actions-block .content {
+  padding: 6px 0;
+  background: transparent;
+}
+.search{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: center;
+  align-items:center;
+}
+.group 			  {
+  position:relative;
+}
+
+input, select 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border: none;
+  box-shadow: 0 0 4px #ccc;
+  margin-right: 24px;
+}
+
+input:focus 		{ outline:none; }
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+h2 		 {
+  text-align:center;
+  margin-bottom:50px;
+}
+h2 small {
+  font-weight:normal;
+  color:#888;
+  display:block;
+}
+.footer 	{ text-align:center; }
+.footer a  { color:#53B2C8; }
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:350px;
+  border:none;
+
+}
+
+/* LABEL ======================================= */
+label 				 {
+  color:#f6d90c;
+  font-size: 15px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-1px;
+  font-size:14px;
+  outline:none;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:300px; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#f6d90c;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+#submitButton {
+  padding: 10px;
+  border: none;
+  box-shadow: 0 0 6px #d1d1d1;
+  min-width: 100px;
+  color: #999999;
+  border-radius: 20px;
+}
+
+#submitButton:hover {
+  cursor: pointer;
+  border: 1px solid #f6d90c;
+  color: #f6d90c;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+#map {
+  height: 900px;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#f6d90c; }
+  to 	{ width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#f6d90c; }
+  to 	{ width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#f6d90c; }
+  to 	{ width:0; background:transparent; }
+}
+
+.select-purpose {
+  background: #ffffff;
+}
+
+.select-purpose:focus {
+  outline: none;
+}
