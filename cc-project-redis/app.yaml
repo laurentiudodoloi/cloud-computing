@@ -1,0 +1,10 @@
+runtime: nodejs10
+
+# Update with Redis instance details
+env_variables:
+  REDISHOST: '10.123.237.235'
+  REDISPORT: '6379'
+
+# Update with Serverless VPC Access connector details
+vpc_access_connector:
+  name: 'projects/cc-project-cf34c/locations/europe-central2/connectors/redis-connector'
